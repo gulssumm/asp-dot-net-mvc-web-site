@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Worker>
+
+<h1>Teacher home page.</h1>
+@if (TempData["keyMessage"] != null)
+{
+    <h2> @TempData["keyMessage"] </h2>
+}
+<a class="nav-link text-dark" asp-area="" asp-controller="Worker" asp-action="Create">Add a worker</a>
+<table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>Worker Name</th>
+            <th>Unit</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var obj in Model)
+        {
+            <tr>
+                <td width="40%">@obj.Name</td>
+                <td width="40%">@obj.Unit</td>
+                <td><a class="nav-link text-dark" asp-area="" asp-controller="Worker" asp-action="Edit" asp-route-id="@obj.Id"></a>Edit</td>
+                <td><a class="nav-link text-dark" asp-area="" asp-controller="Worker" asp-action="Delete" asp-route-id="@obj.Id"></a>Delete</td>
+            </tr>
+        }
+    </tbody>
+</table>

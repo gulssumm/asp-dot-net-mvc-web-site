@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Rector>
+
+<h1>Rector home page.</h1>
+@if (TempData["keyMessage"] != null)
+{
+    <h2> @TempData["keyMessage"] </h2>
+}
+<a class="nav-link text-dark" asp-area="" asp-controller="Rector" asp-action="Create">Add a rector</a>
+<table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>Rector Name</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var obj in Model)
+        {
+            <tr>
+                <td width="40%">@obj.Name</td>
+                <td width="40%">@obj.CreateDateTime</td>
+                <td><a class="nav-link text-dark" asp-area="" asp-controller="Rector" asp-action="Edit" asp-route-name="@obj.Name"></a>Edit</td>
+                <td><a class="nav-link text-dark" asp-area="" asp-controller="Rector" asp-action="Delete" asp-route-name="@obj.Name"></a>Delete</td>
+            </tr>
+        }
+    </tbody>
+</table>

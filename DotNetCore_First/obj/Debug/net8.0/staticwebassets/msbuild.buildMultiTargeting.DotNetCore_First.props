@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\DotNetCore_First.props" />
+</Project>

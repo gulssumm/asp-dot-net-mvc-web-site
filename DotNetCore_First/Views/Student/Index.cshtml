@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Student>
+
+<h1>Student home page.</h1>
+
+<li class="nav-item-dropdown">
+    <a class="nav-link dropdown-toggle text-dark" data-bs-toggle="dropdown">Student</a>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" asp-area="" asp-controller="Student" asp-action="Index">Student</a></li>
+        <li><a class="dropdown-item" asp-area="" asp-controller="Teacher" asp-action="Index">Teacher</a></li>
+        <li><a class="dropdown-item" asp-area="" asp-controller="Rector" asp-action="Index">Rector</a></li>
+        <li><a class="dropdown-item" asp-area="" asp-controller="Council" asp-action="Index">Council</a></li>
+    </ul>
+</li>
+@if (TempData["keyMessage"] != null)
+{
+    <h2> @TempData["keyMessage"] </h2>
+}
+<a class="btn-light" asp-area="" asp-controller="Student" asp-action="Create"></a>
+<p>
+    <a asp-action="Create" class="btn btn-light">
+        <i class="bi bi-plus-circle-dotted"></i>Create
+    </a>
+</p>
+<table class="table" style="width:100%">
+    <thead>
+        <tr>
+            <th>Student Name</th>
+            <th>Department</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var obj in Model)
+        {
+            <tr>
+                <td width="40%">@obj.Name</td>
+                <td width="40%">@obj.Department</td>
+                <td><a class="nav-link text-dark" asp-area="" asp-controller="Student" asp-action="Edit" asp-route-id="@obj.Id">Edit</a></td>
+                <td><a class="nav-link text-dark" asp-area="" asp-controller="Student" asp-action="Delete" asp-route-id="@obj.Id">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
